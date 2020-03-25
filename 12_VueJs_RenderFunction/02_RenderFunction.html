@@ -1,0 +1,58 @@
+<!--
+Now, let us consider we want to change the color and size.
+For example, currently we are using h1 tag and we want to
+change the HTML tag to p tag or div tag for the same component.
+How can we have the flexibility to carry out so many changes?
+
+We can do so with the help of the render function.
+Render function helps make the component dynamic and
+use the way it is required by keeping it common and helping pass arguments using the same component.
+-->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "component_test">
+         <testcomponent :elementtype = "'div,red,25,div1'">Hello Jai</testcomponent>
+         <testcomponent :elementtype = "'h3,green,25,h3tag'">Hello Roy</testcomponent>
+         <testcomponent :elementtype = "'p,blue,25,ptag'">Hello Ria</testcomponent>
+         <testcomponent :elementtype = "'div,green,25,divtag'">Hello Ben</testcomponent>
+      </div>
+      <script type = "text/javascript">
+         Vue.component('testcomponent',{
+            render :function(createElement){
+               var a = this.elementtype.split(",");
+               return createElement(a[0],{
+                  attrs:{
+                     id:a[3],
+                     style:"color:"+a[1]+";font-size:"+a[2]+";"
+                  }
+               },
+               this.$slots.default
+               )
+            },
+            props:{
+               elementtype:{
+                  attributes:String,
+                  required:true
+               }
+            }
+         });
+         var vm = new Vue({
+            el: '#component_test'
+         });
+      </script>
+   </body>
+</html>
+<!--
+We have defined a property called elementtype,
+which takes attributes field of type string.
+Another required field, which mentions that the field is mandatory.
+
+Render function takes createElement as the argument and returns the same.
+CreateElement creates the DOM element the same way as in JavaScript.
+We have also split the elementtype on comma, using the values in the attrs field.
+-->

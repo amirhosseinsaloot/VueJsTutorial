@@ -1,0 +1,40 @@
+<!--
+Conditional Rendering
+
+Let’s get started and work on a example first to explain the details for conditional rendering.
+With conditional rendering, we want to output only when the condition is met and the conditional check is done with the help of if, if-else, if-else-if, show, etc.
+-->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "databinding">
+         <button v-on:click = "showdata" v-bind:style = "styleobj">Click Me</button>
+         <span style = "font-size:25px;"><b>{{show}}</b></span>
+         <h1 v-if = "show">This is h1 tag</h1>
+         <h2 v-else>This is h2 tag</h2>
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#databinding',
+            data: {
+               show: true,
+               styleobj: {
+                  backgroundColor: '#2196F3!important',
+                  cursor: 'pointer',
+                  padding: '8px 16px',
+                  verticalAlign: 'middle',
+               }
+            },
+            methods : {
+               showdata : function() {
+                  this.show = !this.show;
+               }
+            },
+         });
+      </script>
+   </body>
+</html>

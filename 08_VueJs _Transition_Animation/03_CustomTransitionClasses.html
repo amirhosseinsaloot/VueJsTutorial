@@ -1,0 +1,38 @@
+<!--
+Custom Transition Classes
+
+VueJS provides a list of custom classes, which can be added as attributes to the transition element.
+
+    enter-class
+    enter-active-class
+    leave-class
+    leave-active-class
+
+Custom classes basically come into play when we want to use an external CSS library such as animate.css.
+-->
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link href = "https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel = "stylesheet" type = "text/css">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "animate" style = "text-align:center">
+         <button @click = "show = !show"><span style = "font-size:25px;">Animate</span></button>
+         <transition
+            name = "custom-classes-transition"
+            enter-active-class = "animated swing"
+            leave-active-class = "animated bounceIn">
+            <p v-if = "show"><span style = "font-size:25px;">Example</span></p>
+         </transition>
+      </div>
+      <script type = "text/javascript">
+         var vm =  new Vue({
+            el: '#animate',
+            data: {
+               show: true
+            }
+         });
+      </script>
+   </body>
+</html>

@@ -1,0 +1,104 @@
+<!--
+Custom Events : 
+Parent can pass data to its component using the prop attribute, however,
+we need to tell the parent when there are changes in the child component.
+For this, we can use custom events.
+The parent component can listen to the child component event using v-on attribute.
+-->
+
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "databinding">
+         <div id = "counter-event-example">
+            <p style = "font-size:25px;">Language displayed : <b>{{ languageclicked }}</b></p>
+            <button-counter
+            v-for = "(item, index) in languages"
+            v-bind:item = "item"
+            v-bind:index = "index"
+            v-on:showlanguage = "languagedisp">
+            </button-counter>
+         </div>
+      </div>
+      <script type = "text/javascript">
+         Vue.component('button-counter', {
+            template: '<button v-on:click = "displayLanguage(item)"><span style = "font-size:25px;">{{ item }}</span></button>',
+            data: function () {
+               return {
+                  counter: 0
+               }
+            },
+            props:['item'],
+            methods: {
+               displayLanguage: function (lng) {
+                  console.log(lng);
+                  this.$emit('showlanguage', lng);
+               }
+            },
+         });
+         var vm = new Vue({
+            el: '#databinding',
+            data: {
+               languageclicked: "",
+               languages : ["Java", "PHP", "C++", "C", "Javascript", "C#", "Python", "HTML"]
+            },
+            methods: {
+               languagedisp: function (a) {
+                  this.languageclicked = a;
+               }
+            }
+         })
+      </script>
+   </body>
+</html>
+<!--
+The above code shows the data transfer between the parent component and the child component.
+
+The component is created using the following code.
+
+<button-counter
+   v-for = "(item, index) in languages"
+   v-bind:item = "item"
+   v-bind:index = "index"
+   v-on:showlanguage = "languagedisp">
+</button-counter> 
+
+
+There is a v-for attribute, which will loop with the languages array.
+The array has a list of languages in it. We need to send the details to the child component.
+The values of the array are stored in the item and the index.
+v-bind:item = "item"
+v-bind:index = "index"
+
+************************************************************************************************************************************************
+To refer to the values of the array, we need to bind it first to a variable and the varaiable is referred using props property as follows.
+Vue.component('button-counter', {
+   template: '<button v-on:click = "displayLanguage(item)"><span style = "font-size:25px;">{{ item }}</span></button>',
+   data: function () {
+      return {
+         counter: 0
+      }
+   },
+   props:['item'],
+   methods: {
+      displayLanguage: function (lng) {
+         console.log(lng);
+         this.$emit('showlanguage', lng);
+      }
+   },
+});
+
+************************************************************************************************************************************************
+The props property contains the item in an array form. We can also refer to the index as −
+
+props:[‘item’, ‘index’]
+
+************************************************************************************************************************************************
+The method displayLanguage calls this.$emit(‘showlanguage’, lng);
+
+$emit is used to call the parent component method. The method showlanguage is the event name given on the component with v-on.
+-->

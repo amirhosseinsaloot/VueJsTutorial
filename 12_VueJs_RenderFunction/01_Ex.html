@@ -1,0 +1,27 @@
+<!-- Component does provide something called as slots.
+Let’s make use of it and see if we get the desired results. -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "component_test">
+         <testcomponent>Hello Jai</testcomponent>
+         <testcomponent>Hello Roy</testcomponent>
+         <testcomponent>Hello Ria</testcomponent>
+         <testcomponent>Hello Ben</testcomponent>
+      </div>
+      <script type = "text/javascript">
+         Vue.component('testcomponent',{
+            template : '<h1><slot></slot></h1>'
+         });
+         var vm = new Vue({
+            el: '#component_test'
+         });
+      </script>
+   </body>
+</html>
+<!-- As seen in the above code, in the template we have added slot,
+hence now it takes the value to send inside the component -->

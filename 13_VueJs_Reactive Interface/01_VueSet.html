@@ -1,0 +1,45 @@
+<!-- Vue set
+
+This method helps to set a property on an object. It is used to get around the limitation that Vue cannot detect property additions.
+Syntax
+
+Vue.set( target, key, value )
+
+Where,
+
+target: Can be an object or an array
+
+key : Can be a string or number
+
+value: Can be any type -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "app">
+         <p style = "font-size:25px;">Counter: {{ products.id }}</p>
+         <button @click = "products.id++" style = "font-size:25px;">Click Me</button>
+      </div>
+      <script type = "text/javascript">
+         var myproduct = {"id":1, name:"book", "price":"20.00"};
+         var vm = new Vue({
+            el: '#app',
+            data: {
+               counter: 1,
+               products: myproduct
+            }
+         });
+         vm.products.qty = "1";
+        //   Vue.set(myproduct, 'qty', 2);
+         console.log(vm);
+         vm.$watch('counter', function(nval, oval) {
+            alert('Counter is incremented :' + oval + ' to ' + nval + '!');
+         });
+      </script>
+   </body>
+</html>
+<!-- We have used Vue.set to add the qty to the array using the following piece of code.
+Vue.set(myproduct, 'qty', 2); -->

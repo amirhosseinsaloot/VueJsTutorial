@@ -1,0 +1,43 @@
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "computed_props">
+         <input type = "text" v-model = "fullname" />
+         <h1>{{firstName}}</h1>
+         <h1>{{lastName}}</h1>
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#computed_props',
+            data: {
+               firstName : "Terry",
+               lastName : "Ben"
+            },
+            methods: {
+            },
+            computed :{
+               fullname : {
+                  get : function() {
+                     return this.firstName+" "+this.lastName;
+                  },
+                  set : function(name) {
+                     var fname = name.split(" ");
+                     this.firstName = fname[0];
+                     this.lastName = fname[1]
+                  }
+               }
+            }
+         });
+      </script>
+   </body>
+</html>
+
+<!-- It has the name as the parameter, which is nothing but the fullname in the textbox.
+Later, it is split on space and the firstname and the lastname is updated.
+Now, when we run the code and edit the textbox, the same thing will be displayed in the browser.
+The firstname and the lastname will be updated because of the set function.
+The get function returns the firstname and lastname, while the set function updates it, if anything is edited. -->

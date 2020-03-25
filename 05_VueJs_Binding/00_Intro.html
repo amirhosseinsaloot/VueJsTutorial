@@ -1,0 +1,60 @@
+<!-- In this chapter will learn how to manipulate or assign values to HTML attributes, change the style,
+and assign classes with the help of binding directive called v-bind available with VueJS.
+Let’s consider an example to understand why we need and when to use v-bind directive for data binding. -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "databinding">
+         {{title}}<br/>
+         <a href = "hreflink" target = "_blank"> Click Me </a> <br/>
+         <a href = "{{hreflink}}" target = "_blank">Click Me </a>  <br/>
+         <a v-bind:href = "hreflink" target = "_blank">Click Me </a>   <br/>
+         <!-- 
+         Or 
+         <a :href = "hreflink" target = "_blank">Click Me </a> 
+        -->
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#databinding',
+            data: {
+               title : "DATA BINDING",
+               hreflink : "http://www.google.com"
+            }
+         });
+      </script>
+   </body>
+</html>
+<!-- 
+In above example, we have displayed a title variable and three anchor links.
+We have also assigned a value to the href from the data object.
+Now, if we check the output in the browser and inspect,
+we will see the first two anchor links do not have the href correctly as shown in the below :
+
+        DATA BINDING
+        <br>
+        <a href="hreflink" target="_blank"> Click Me </a>
+        <br>
+        <a href="{{hreflink}}" target="_blank">Click Me </a>
+        <br>
+        <a href="http://www.google.com" target="_blank">Click Me </a>
+        <br>
+
+The first clickme shows the href as hreflink, and the second one shows it in {{hreflink}},
+while the last one displays the correct url as we require.
+
+Hence, to assign values to HTML attributes, we need to bind it with the directive v-bind as follows :
+
+    <a v-bind:href = "hreflink" target = "_blank">Click Me </a>
+
+VueJS also provides a shorthand for v-bind as follows :
+
+    <a :href = "hreflink" target = "_blank">Click Me </a>
+
+If we see the inspect element in the browser, the anchor tag does not show the v-bind attribute,
+however, it displays the plain HTML. None of the VueJS properties are seen when we inpsect the DOM.
+-->

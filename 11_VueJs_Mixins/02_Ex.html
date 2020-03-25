@@ -1,0 +1,37 @@
+<!-- If we happen to have the same function name in methods, then the main vue instance will take priority. -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "databinding"></div>
+      <script type = "text/javascript">
+         var mixin = {
+            methods: {
+               hellworld: function () {
+                  console.log('In HelloWorld');
+               },
+               samemethod: function () {
+                  console.log('Mixin:Same Method');
+               }
+            }
+         };
+         var vm = new Vue({
+            mixins: [mixin],
+            methods: {
+               start: function () {
+                  console.log('start method');
+               },
+               samemethod: function () {
+                  console.log('Main: same method');
+               }
+            }
+         });
+         vm.hellworld();
+         vm.start();
+         vm.samemethod();
+      </script>
+   </body>
+</html>

@@ -1,0 +1,50 @@
+<!--
+Animation
+Animations are applied the same way as transition is done.
+Animation also has classes that needs to be declared for the effect to take place.
+-->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <style>
+         .shiftx-enter-active {
+            animation: shift-in 2s;
+         }
+         .shiftx-leave-active {
+            animation: shift-in 2s reverse;
+         }
+         @keyframes shift-in {
+            0%   {transform:rotateX(0deg);}
+            25%  {transform:rotateX(90deg);}
+            50%  {transform:rotateX(120deg);}
+            75%  {transform:rotateX(180deg);}
+            100% {transform:rotateX(360deg);}
+         }
+      </style>
+      <div id = "databinding">
+         <button v-on:click = "show = !show">Click Me</button>
+         <transition name = "shiftx">
+            <p v-show = "show">
+               <img src = "VueJSLogo.jpeg" style = "width:100px;height:100px;" />
+            </p>
+         </transition>
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#databinding',
+            data: {
+               show:true
+            },
+            methods : {
+            }
+         });
+      </script>
+   </body>
+</html>
+<!-- The class is prefixed with the transition name, i.e. shiftx-enter-active and .shiftx-leave-active.
+The animation is defined with the keyframes from 0% to 100%.
+There is a transform defined at each of the keyframes is as shown in the following piece of code. -->

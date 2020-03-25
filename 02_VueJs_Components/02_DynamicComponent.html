@@ -1,0 +1,37 @@
+<!-- 
+Dynamic Components :
+Dynamic components are created using the keyword <component></component> and it is bound using a property as shown in the following example.
+-->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="=UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "databinding">
+         <component v-bind:is = "view"></component>
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#databinding',
+            data: {
+               view: 'component1'
+            },
+            components: {
+               'component1': {
+                  template: '<div><span style = "font-size:25;color:red;">Dynamic Component</span></div>'
+               }
+            }
+         });
+      </script>
+   </body>
+</html>
+
+<!--
+Dynamic component is created using the following syntax : 
+
+<component v-bind:is = "view"></component>
+
+It has v-bind:is = ”view”, and a value view is assigned to it. View is defined in the Vue instance as follows.
+-->

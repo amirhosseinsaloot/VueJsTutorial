@@ -1,0 +1,29 @@
+<!-- VueJS supports filters that help with text formatting.
+It is used along with v-bind and interpolations ({{}}).
+We need a pipe symbol at the end of JavaScript expression for filters. -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "databinding">
+         <input  v-model = "name" placeholder = "Enter Name" /><br/>
+         <span style = "font-size:25px;"><b>Letter count is : {{name | countletters}}</b></span>
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#databinding',
+            data: {
+               name : ""
+            },
+            filters : {
+               countletters : function(value) {
+                  return value.length;
+               }
+            }
+         });
+      </script>
+   </body>
+</html>

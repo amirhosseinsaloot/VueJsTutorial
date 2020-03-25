@@ -1,0 +1,40 @@
+<!-- We have seen components and the usage of it. For example,
+we have a content that needs to be reused across the project.
+We can convert the same as a component and use it. -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "component_test">
+          <testcomponent></testcomponent>
+          <!-- <testcomponent>Hello Jai</testcomponent>
+          <testcomponent>Hello Roy</testcomponent>
+          <testcomponent>Hello Ria</testcomponent>
+          <testcomponent>Hello Ben</testcomponent> -->
+      </div>
+      <script type = "text/javascript">
+        Vue.component('testcomponent',{
+           template : '<h1>Hello World</h1>'
+        });
+        var vm = new Vue({
+           el: '#component_test'
+        });
+     </script>
+   </body>
+</html>
+<!-- However, now we need some changes to the component.
+We don’t want the same text to be printed.
+How can we change it? In case, we type something inside the component,
+will it be take into consideration?
+
+Let us consider the following example and see what happens.
+
+<div id = "component_test">
+   <testcomponent>Hello Jai</testcomponent>
+   <testcomponent>Hello Roy</testcomponent>
+   <testcomponent>Hello Ria</testcomponent>
+   <testcomponent>Hello Ben</testcomponent>
+</div> -->

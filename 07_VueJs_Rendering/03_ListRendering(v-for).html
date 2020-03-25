@@ -1,0 +1,58 @@
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "databinding">
+         <input type = "text" v-on:keyup.enter = "showinputvalue"
+            v-bind:style = "styleobj" placeholder = "Enter Fruits Names"/>
+         <h1 v-if = "items.length>0">Display Fruits Name</h1>
+         <ul>
+            <li v-for = "a in items">{{a}}</li>
+            <!-- If we wish to display the index of the array, it is done using the following code.
+            <li v-for = "(a, index) in items">{{index}}--{{a}}</li> -->
+         </ul>
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#databinding',
+            data: {
+               items:[],
+               styleobj: {
+                  width: "30%",
+                  padding: "12px 20px",
+                  margin: "8px 0",
+                  boxSizing: "border-box"
+               }
+            },
+            methods : {
+               showinputvalue : function(event) {
+                  this.items.push(event.target.value);
+               }
+            },
+         });
+      </script>
+   </body>
+</html>
+<!--
+A variable called items is declared as an array.
+In methods, there is a method called showinputvalue,
+which is assigned to the input box that takes the names of the fruits.
+In the method, the fruits entered inside the textbox are added to the array using the following piece of code.
+
+showinputvalue : function(event) {
+   this.items.push(event.target.value);
+}
+
+We have used v-for to display the fruits entered as in the following piece of code.
+V-for helps to iterate over the values present in the array.
+
+<ul>
+   <li v-for = "a in items">{{a}}</li>
+</ul>
+
+To iterate over the array with for loop, we have to use
+v-for = ”a in items” where a holds the values in the array and will display till all the items are done.
+-->

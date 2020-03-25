@@ -1,0 +1,33 @@
+<!-- Binding HTML Classes
+To bind HTML class, we need to use v-bind: class -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../../vue.js"></script>
+   </head>
+   <body>
+      <style>
+         .active {
+            background: red;
+         }
+      </style>
+      <div id = "classbinding">
+         <div v-bind:class = "{active:isactive}"><b>{{title}}</b></div>
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#classbinding',
+            data: {
+               title : "CLASS BINDING",
+               isactive : true
+            }
+         });
+      </script>
+   </body>
+</html>
+<!-- There is a div created with v-bind: class=” {active: isactive}”.
+Here, isactive is a variable which is based on true or false.
+It will apply the class active to the div. In the data object,
+we have assigned the isactive variable as true.
+There is a class defined in the style .active with the background color as red. -->

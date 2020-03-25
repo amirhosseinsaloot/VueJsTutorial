@@ -1,0 +1,45 @@
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+      <script type = "text/javascript" src = "../vue-router.js"></script>
+   </head>
+   <body>
+      <div id = "app">
+         <h1>Routing Example</h1>
+         <p>
+            <router-link to = "/route1">Router Link 1</router-link>
+            <router-link to = "/route2">Router Link 2</router-link>
+         </p>
+         <!-- route outlet -->
+         <!-- component matched by the route will render here -->
+         <router-view></router-view>
+      </div>
+      <script type = "text/javascript">
+         const Route1 = { template: '<div style = "border-radius:20px;background-color:cyan;width:200px;height:50px;margin:10px;font-size:25px;padding:10px;">This is router 1</div>' }
+         const Route2 = { template: '<div style = "border-radius:20px;background-color:green;width:200px;height:50px;margin:10px;font-size:25px;padding:10px;">This is router 2</div>' }
+         const routes = [
+            { path: '/route1', component: Route1 },
+            { path: '/route2', component: Route2 }
+         ];
+         const router = new VueRouter({
+            routes // short for `routes: routes`
+         });
+         var vm = new Vue({
+            el: '#app',
+            router
+         });
+      </script>
+   </body>
+</html>
+<!-- 
+<router-link> is a component used to navigate to the HTML content to be displayed to the user.
+The to property is the destination, i.e the source file where the contents to be displayed will be picked.
+
+Routes define the path and the component. The path i.e. /route1 will be displayed in the URL when the user clicks on the router link.
+
+Component takes the templates names to be displayed. The path from the routes need to match with the router link to the property.
+
+For example, <router-link to = ”path here”></router-link>
+-->

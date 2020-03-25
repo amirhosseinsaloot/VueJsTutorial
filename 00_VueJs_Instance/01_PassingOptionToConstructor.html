@@ -1,0 +1,31 @@
+<html>
+   <head>
+      <title>VueJs Introduction</title>
+      <script type = "text/javascript" src = "../vue.js"></script>
+      <meta charset="UTF-8">
+   </head>
+   <body>
+      <script type = "text/javascript">
+         var _obj = { fname: "Raj", lname: "Singh"}
+         
+         // direct instance creation
+         var vm = new Vue({
+            data: _obj
+         });
+         console.log(vm.fname);
+         console.log(vm.$data);
+         console.log(vm.$data.fname);
+      </script>
+   </body>
+</html>
+
+<!-- Now, we need to pass options to the Vue constructor which is mainly data, template, element to mount on, methods, callbacks, etc.
+Let us take a look at the options to be passed to the Vue.
+#data − This type of data can be an object or a function. Vue converts its properties to getters/setters to make it reactive. 
+
+Output :
+
+console.log(vm.fname);       prints Raj
+console.log(vm.$data);       prints the full object as shown above
+console.log(vm.$data.fname); prints Raj 
+-->

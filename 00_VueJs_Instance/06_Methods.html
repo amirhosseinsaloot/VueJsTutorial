@@ -1,0 +1,30 @@
+<!-- Methods − Methods are to be included with the Vue instance as shown in the following code.
+We can access the function using the Vue object.
+-->
+<html>
+   <head>
+      <title>VueJs Introduction</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            data: { a: 5 },
+            methods: {
+               asquare: function () {
+                  this.a *= this.a;
+               }
+            }
+         })
+         vm.asquare();
+         console.log(vm.a); // 25
+      </script>
+   </body>
+</html>
+<!-- 
+Methods are part of the Vue constructor.
+Let us make a call to the method using the Vue object vm.asquare (),
+the value of the property a is updated in the asquare function.
+The value of a is changed from 1 to 25, and the same is seen reflected in the following browser console.
+-->

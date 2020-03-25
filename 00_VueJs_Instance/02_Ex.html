@@ -1,0 +1,46 @@
+<html>
+   <head>
+      <title>VueJs Introduction</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <script type = "text/javascript">
+         var _obj = { fname: "Raj", lname: "Singh"};
+         
+         // direct instance creation
+         var vm = new Vue({
+            data: _obj
+         });
+         console.log(vm.fname);
+         console.log(vm.$data);
+         console.log(vm.$data.fname);
+         
+         // must use function when in Vue.extend()
+         var Component = Vue.extend({
+            data: function () {
+               return _obj
+            }
+         });
+         var myComponentInstance = new Component();
+         console.log(myComponentInstance.lname);
+         console.log(myComponentInstance.$data);
+      </script>
+   </body>
+</html>
+<!-- 
+In case of a component, the data is a function, which is used with Vue.extend as shown above. The data is a function. For example,
+
+data: function () {
+   return _obj
+}
+
+To refer to the data from the component, we need to create an instance of it. For example,
+
+var myComponentInstance = new Component();
+
+To fetch the details from the data, we need to do the same as we did with the parent component above. For example.
+
+console.log(myComponentInstance.lname);
+console.log(myComponentInstance.$data); 
+-->

@@ -1,0 +1,19 @@
+// Props − Type for props is an array of string or object.
+// It takes an array-based or object-based syntax. They are said to be attributes used to accept data from the parent component.
+// Type − array of string. For example, { [key: string]: any }. It needs to be passed during the creation of Vue instance.
+Vue.component('props-demo-advanced', {
+   props: {
+      // just type check
+      height: Number,
+      
+      // type check plus other validations
+      age: {
+         type: Number,
+         default: 0,
+         required: true,
+         validator: function (value) {
+            return value >= 0
+         }
+      }
+   }
+})

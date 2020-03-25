@@ -1,0 +1,44 @@
+<!-- Now, let’s try to understand the difference between a method and a computed property.
+Both are objects. There are functions defined inside, which returns a value.
+In case of method, we call it as a function, and for computed as a property.
+Using the following example, let us understand the difference between method and computed property. -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "computed_props">
+         <h1 style = "background-color:gray;">Random No from computed property: {{getrandomno}}</h1>
+         <h1>Random No from method: {{getrandomno1()}}</h1>
+         <h1>Random No from method : {{getrandomno1()}}</h1>
+         <h1  style = "background-color:gray;">Random No from computed property: {{getrandomno}}</h1>
+         <h1  style = "background-color:gray;">Random No from computed property: {{getrandomno}}</h1>
+         <h1  style = "background-color:gray;">Random No from computed
+            property: {{getrandomno}}</h1>
+         <h1>Random No from method: {{getrandomno1()}}</h1>
+         <h1>Random No from method: {{getrandomno1()}}</h1>
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#computed_props',
+            data: {
+               name : "helloworld"
+            },
+            methods: {
+               getrandomno1 : function() {
+                  return Math.random();
+               }
+            },
+            computed :{
+               getrandomno : function(){
+                  return Math.random();
+               }
+            }
+         });
+      </script>
+   </body>
+</html>
+<!-- If we look at the values above, we will see that the random numbers returned from the computed property remains the same irrespective of the number of times it is called.
+This means everytime it is called, the last value is updated for all. Whereas for a method, it’s a function, hence, everytime it is called it returns a different value. -->

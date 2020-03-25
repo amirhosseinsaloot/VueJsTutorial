@@ -1,0 +1,43 @@
+<!-- So far, we have seen the basic component with the basic options. Now,
+let’s add some more options such as data and methods to it.
+Just as Vue instance has data and methods,component also shares the same.
+Hence, we will extend the code, which we have already seen with data and methods -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "component_test">
+         <testcomponent></testcomponent>
+      </div>
+      <div id = "component_test1">
+         <testcomponent></testcomponent>
+      </div>
+      <script type = "text/javascript">
+         Vue.component('testcomponent',{
+            template : '<div v-on:mouseover = "changename()" v-on:mouseout = "originalname();"><h1>Custom Component created by <span id = "name">{{name}}</span></h1></div>',
+            data: function() {
+               return {
+                  name : "Ria"
+               }
+            },
+            methods:{
+               changename : function() {
+                  this.name = "Ben";
+               },
+               originalname: function() {
+                  this.name = "Ria";
+               }
+            }
+         });
+         var vm = new Vue({
+            el: '#component_test'
+         });
+         var vm1 = new Vue({
+            el: '#component_test1'
+         });
+      </script>
+   </body>
+</html>

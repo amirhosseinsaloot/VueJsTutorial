@@ -1,0 +1,37 @@
+<!-- VueJS provides options to add reactivity to properties, which are added dynamically.
+Consider that we have already created vue instance and need to add the watch property -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "app">
+         <p style = "font-size:25px;">Counter: {{ counter }}</p>
+         <button @click = "counter++" style = "font-size:25px;">Click Me</button>
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#app',
+            data: {
+               counter: 1
+            }
+         });
+         vm.$watch('counter', function(nval, oval) {
+            alert('Counter is incremented :' + oval + ' to ' + nval + '!');
+         });
+         setTimeout(
+            function(){
+               vm.counter = 20;
+            },2000
+         );
+      </script>
+   </body>
+</html>
+<!-- There is a property counter defined as 1 in data object. The counter is incremented when we click the button.
+Vue instance is already created.
+
+We need to use $watch to add watch outside the vue instance.
+There is an alert added, which shows the value change for the counter property.
+There is also a timer function added, i.e. setTimeout, which sets the counter value to 20. -->

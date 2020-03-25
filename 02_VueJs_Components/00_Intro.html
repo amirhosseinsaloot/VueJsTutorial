@@ -1,0 +1,54 @@
+<!-- Vue Components are one of the important features of VueJS that creates custom elements, which can be reused in HTML. -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "component_test">
+         <testcomponent></testcomponent>
+      </div>
+      <div id = "component_test1">
+         <testcomponent></testcomponent>
+      </div>
+      <script type = "text/javascript">
+         Vue.component('testcomponent',{
+            template : '<div><h1>This is coming from component</h1></div>'
+         });
+         var vm = new Vue({
+            el: '#component_test'
+         });
+         var vm1 = new Vue({
+            el: '#component_test1'
+         });
+      </script>
+   </body>
+</html>
+<!-- In the .html file, we have created two div with id component_test and component_test1.
+In the .js files shown above, two Vue instances are created with the div ids.
+We have created a common component to be used with both the view instances.
+
+To create a component, following is the syntax :
+
+  Vue.component('nameofthecomponent',{ // options});
+
+Once a component is created, the name of the component becomes the custom element and the same can be used in the Vue instance element created,
+i.e. inside the div with ids component_test and component_test1.
+In the .js file, we have used a test component as the name of the component and the same name is used as the custom element inside the divs.
+
+
+
+We have also directly made the components a part of vue instance as shown in the following script : 
+
+var vm = new Vue({
+  el: '#component_test',
+  components:{
+     'testcomponent': {
+        template : '<div><h1>This is coming from component</h1></div>'
+     }
+  }
+});
+
+
+This is called local registration and the components will be a part of only the vue instance created. -->

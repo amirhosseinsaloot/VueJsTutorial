@@ -1,0 +1,44 @@
+<!-- Vue.delete
+
+This function is used to delete the property dynamically.
+Example
+
+Vue.delete( target, key )
+
+Where,
+
+target: Can be an object or an array
+
+key: Can be a string or a number
+
+To delete any property, we can use Vue.delete as in the following code -->
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <meta charset="UTF-8">
+      <script type = "text/javascript" src = "../vue.js"></script>
+   </head>
+   <body>
+      <div id = "app">
+         <p style = "font-size:25px;">Counter: {{ products.id }}</p>
+         <button @click = "products.id++" style = "font-size:25px;">Click Me</button>
+      </div>
+      <script type = "text/javascript">
+         var myproduct = {"id":1, name:"book", "price":"20.00"};
+         var vm = new Vue({
+            el: '#app',
+            data: {
+               counter: 1,
+               products: myproduct
+            }
+         });
+         Vue.delete(myproduct, 'price');
+         console.log(vm);
+         vm.$watch('counter', function(nval, oval) {
+            alert('Counter is incremented :' + oval + ' to ' + nval + '!');
+         });
+      </script>
+   </body>
+</html>
+<!-- In the above example, we have used Vue.delete to delete the price from the array using the following piece of code.
+Vue.delete(myproduct, 'price'); -->
