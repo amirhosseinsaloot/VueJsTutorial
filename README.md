@@ -1,2 +1,2 @@
 # VueJsTutorial
-This is VueJs tutorial based on tutorialspoint sample codes
+This is VueJs tutorial based on https://www.tutorialspoint.com sample codes
